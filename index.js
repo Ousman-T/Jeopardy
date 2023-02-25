@@ -11,7 +11,12 @@ const card10 = Math.round(Math.random() * 10);
 cardArr = [card1,card2,card3,card4,card5,card6,card7,card8,card9,card10];
 console.log(cardArr);
 
-const player1 = prompt("Choose a number between 0 - 10");
+// function DrawCard(){
+//     prompt("Pick a card between 0-10.");
+//     return;
+// }
+
+const player1 = prompt("Pick a card between 0-10");
 const computer = cardArr[Math.floor(Math.random() * cardArr.length)];
 console.log(player1);
 console.log(computer);
@@ -21,5 +26,15 @@ for(let i = 0; i < 10; i++){
         console.log("You've won the round, now win the game!");
     } else if (computer > player1){
         console.log("You've lost the round, but can still win the game!");
-    }
+    } break;
 }
+
+function NextRound(){
+    if(player1 > computer){
+        prompt("You've won the round! Would you like to begin the next round?")
+    } else if (computer > player1){
+        prompt("You've lost the round, would you like to begin the next one?")
+    }  
+}
+
+NextRound();
