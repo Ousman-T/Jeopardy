@@ -21,20 +21,6 @@ const computer = cardArr[Math.floor(Math.random() * cardArr.length)];
 console.log(player1);
 console.log(computer);
 
-for(let i = 0; i < 10; i++){
-    if(player1 > computer){
-        console.log("You've won the round, now win the game!");
-    } else if (computer > player1){
-        console.log("You've lost the round, but can still win the game!");
-    } break;
+function PlayRound(){
+    
 }
-
-function NextRound(){
-    if(player1 > computer){
-        prompt("You've won the round! Would you like to begin the next round?")
-    } else if (computer > player1){
-        prompt("You've lost the round, would you like to begin the next one?")
-    }  
-}
-
-NextRound();
