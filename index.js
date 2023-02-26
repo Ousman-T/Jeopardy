@@ -22,5 +22,8 @@ console.log(player1);
 console.log(computer);
 
 function PlayRound(){
-    
+    for(let i = 0; i < cardArr.length; i++){
+        console.log("Let's see who wins!");
+    }
 }
+PlayRound();
