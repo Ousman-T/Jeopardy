@@ -1,0 +1,171 @@
+:root {
+    --blue: linear-gradient(180deg, #0120CB 0%, #011BA9 100%);
+    --yellow: #FFE817;
+    --green: #90FF7E;
+    --red: #FFA57E;
+    --spooky-orange: #ad4e08;
+    --spooky-orange-text: #fffec8;
+    --gap: 0.1em;
+    --text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ }
+ 
+ * {
+    box-sizing: border-box;
+ }
+ 
+ html, body {
+    height: 100%;
+ }
+ 
+ body {
+    font-family: sans-serif;
+     background: #222;
+    color: white;
+    font-size: 2vw;
+    text-align: center;
+    padding: 1em;
+    background: linear-gradient(180deg, #2E2E3A 0%, #0C0C2C 100%);
+ }
+ 
+ .top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-shadow: var(--text-shadow);
+ }
+ .score {
+    display: flex;
+    align-items: center;
+ }
+ .score-count {
+    color: var(--yellow);
+    font-size: 2em;
+    font-weight:bold;
+    margin-left: 0.2em;
+ }
+ 
+ .column ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+ }
+ .board {
+    display: flex;
+    justify-content: space-around;
+ }
+ .board .column {
+    flex: 1;
+    margin-left: var(--gap);
+    margin-right: var(--gap);
+ }
+ .board .column header {
+    text-transform: capitalize;
+    background: var(--blue);
+    text-align: center;
+    margin-bottom: 1em;
+    height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ .board .column li {
+    background: var(--blue);
+    color: var(--yellow);
+    height: 3em;
+    margin-bottom: 0.25em;
+ }
+ .board .column button {
+    height: 100%;
+    color: inherit;
+    font-size: 2em;
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    text-shadow: var(--text-shadow);
+    font-weight:bold;
+ }
+ .board .column button.used {
+    visibility: hidden;
+ }
+ 
+ .card-modal {
+    opacity: 0;
+    pointer-events:none;
+    transition: opacity 0.4s;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: var(--blue);
+    position: fixed;
+    font-size: 2vw;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ .card-modal.visible {
+    opacity: 1;
+    pointer-events:initial;
+ }
+ .card-modal.showing-result .result {
+    display:block;
+ }
+ 
+ .card-model .clue-text {
+    margin-bottom: 2em;
+ }
+ 
+ .result,
+ .card-modal.showing-result form {
+    display:none;
+ }
+ 
+ .card-modal form {
+    display: flex;
+ }
+ .card-modal form input[type="text"] {
+    display: block;
+    flex-grow: 1;
+    height: 3em;
+    line-height: 3em;
+    border: 0;
+    text-align: center;
+    border-top-left-radius: 0.4em;
+    border-bottom-left-radius: 0.4em;
+ }
+ .card-modal form button[type="submit"] {
+    padding-left: 2em;
+    padding-right: 2em;
+    cursor: pointer;
+    font-family: inherit;
+    background: var(--yellow);
+    border: 0;
+    font-size: inherit;
+    border-top-right-radius: 0.4em;
+    border-bottom-right-radius: 0.4em;
+ }
+ .card-modal-inner {
+    width: 60%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ }
+ 
+ .result_success, .result_fail {
+    font-size: 2em;
+    font-weight:bold;
+ }
+ .result_success {
+    color: var(--green);
+ }
+ .result_fail {
+    color: var(--red);
+ }
+ .result_correct-answer-text {
+    font-weight:bold;
+    font-size: 2em;
+    display:block;
+    margin-left: 0.1em;
+ }
