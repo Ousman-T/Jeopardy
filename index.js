@@ -1,7 +1,7 @@
 const game = document.getElementById('game');
 const score = document.getElementById('score');
-player1 = document.getElementById('score-track');
-player2 = document.getElementById('2nd-score-track');
+const player1 = document.getElementById('score-track');
+const player2 = document.getElementById('2nd-score-track');
 
 // large array storing all questions genres and answers
 const jeopardyCats = [
