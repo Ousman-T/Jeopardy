@@ -1,5 +1,6 @@
 const game = document.getElementById('game');
-const score = document.getElementById('score');
+const score1 = document.getElementById('score-track');
+const score2 = document.getElementById('2nd-score-track');
 const player1 = document.getElementById('score-track');
 const player2 = document.getElementById('2nd-score-track');
 
@@ -11,20 +12,25 @@ const jeopardyCats = [
             {
                 question: "Where was Ghengis Khan Born",
                 // answer: document.createElement('form')
-                answers:['Khazakstan', 'Mongolia'],
-                correct: 'Mongolia'
+                answers:[],
+                correct: 'Mongolia',
+                level: 'Beginner'
+                
             },
             {
                 question:"How old was Alexander the Great when he passed?",
                 // answer: document.createElement('form')
-                answers:['48', '32'],
-                correct:'32'
+                answers:[],
+                correct:'32',
+                level: 'Intermediate'
+                
             },
             {
                 question:"What was the name of Mao Zedong's plan to industrialize China?",
                 // answer: document.createElement('form')
-                answers:['China Rising', 'Great Leap Forward'],
-                correct:'Great Leap Forward'
+                answers:[],
+                correct:'Great Leap Forward',
+                level: 'Advance'
             }
         ]
     },
@@ -34,20 +40,23 @@ const jeopardyCats = [
             {
                 question: "What is the name of the person who invented the language JavaScript?",
                 // answer: document.createElement('form')
-                answers:['Dennis Ritchie', 'Brendan Eich'],
-                correct: 'Brendan Eich'
+                answers:[],
+                correct: 'Brendan Eich',
+                level:'Intermediate'
             },
             {
                 question: "Which is safer between innerText and innerHTML?",
                 // answer: document.createElement('form')
-                answers:['innerText', 'innerHTML'],
-                correct:'innerText'
+                answers:[],
+                correct:'innerText',
+                level: 'Beginner'
             },
             {
                 question: "When was GitHub founded?",
                 // answer: document.createElement('form')
-                answers:['2008','2012'],
-                correct:'2008'
+                answers:[],
+                correct:'2008',
+                level: 'Advance'
             }
         ]
     },
@@ -57,20 +66,23 @@ const jeopardyCats = [
             {
                 question: "In what city was Michael Jackson born?",
                 // answer: document.createElement('form')
-                answers:['Gary, Indiana', 'Baltimore, Maryland'],
-                correct:'Gary, Indiana'
+                answers:[],
+                correct:'Gary, Indiana',
+                level: 'Beginner'
             },
             {
                 question: "What year was 1984 published by George Orwell?",
                 // answer: document.createElement('form')
-                answers:['1984', '1949'],
-                correct:'1949'
+                answers:[],
+                correct:'1949',
+                level:'Intermediate'
             },
             {
                 question:"Who is on the Twenty Dollar Bill?",
                 // answer: document.createElement('form')
-                answers:['Andrew Jackson', 'Benjamin Franklin'],
-                correct:'Andrew Jackson'
+                answers:[],
+                correct:'Andrew Jackson',
+                level:'Advance'
             }
 
         ]
@@ -81,20 +93,23 @@ const jeopardyCats = [
             {
                 question:"How many elements are in the periodic table?",
                 // answer:document.createElement('form')
-                answers:['185', '118'],
-                correct:['118']
+                answers:[],
+                correct:['118'],
+                level: 'Intermediate'
             },
             {
                 question:"Name at least one main layer of the atmosphere.",
                 // answer: document.createElement('form')
-                answers:['Troposphere', 'Kilosphere', 'Stratosphere', 'Milosphere', 'Exosphere'],
-                correct:['Troposphere', 'Stratosphere', 'Exosphere']
+                answers:[],
+                correct:['Troposphere', 'Stratosphere', 'Exosphere'],
+                level: 'Beginner'
             },
             {
                 question:"How old is Earth? (According to 'science')",
                 // answer: document.createElement('form')
-                answers:['6.8 billion years', '4.5 billion years', '2.4 billion years'],
-                correct:['4.5 billion years']
+                answers:[],
+                correct:['4.5 billion years'],
+                level: 'Advance'
 
             }
         ]
@@ -113,10 +128,22 @@ function addCategory(category){
 // adding columns and games to the original html
     column.appendChild(genreTitle)
     game.append(column)
+
+    // creating cards
     category.questions.forEach(question => {
     const card = document.createElement('div')
     card.classList.add('card')
     column.append(card)
+    // assigning numbers to back of cards
+    if(question.level === 'Beginner'){
+        card.innerText = '100';
+    }
+    if(question.level === 'Intermediate'){
+        card.innerText = '200';
+    }
+    if(question.level === 'Advance'){
+        card.innerText = '300';
+    }
 
     })
 
