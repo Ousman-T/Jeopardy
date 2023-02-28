@@ -113,6 +113,14 @@ function addCategory(category){
 // adding columns and games to the original html
     column.appendChild(genreTitle)
     game.append(column)
+    category.questions.forEach(question => {
+    const card = document.createElement('div')
+    card.classList.add('card')
+    column.append(card)
+
+    })
+
 }
 
 jeopardyCats.forEach(category => addCategory(category))
+
