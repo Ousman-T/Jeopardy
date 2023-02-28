@@ -7,15 +7,15 @@ const jeopardyCats = [
         questions: [
             {
                 question: "Where was Ghengis Khan Born",
-                answer: document.createElement('form')
+                // answer: document.createElement('form')
             },
             {
                 question:"How old was Alexander the Great when he passed?",
-                answer: document.createElement('form')
+                // answer: document.createElement('form')
             },
             {
                 question:"What was the name of Mao Zedong's plan to industrialize China?",
-                answer: document.createElement('form')
+                // answer: document.createElement('form')
             }
         ]
     },
@@ -24,21 +24,35 @@ const jeopardyCats = [
         questions: [
             {
                 question: "What is the name of the person who invented the language JavaScript?",
-                answer: document.createElement('form')
+                // answer: document.createElement('form')
             },
             {
                 question: "What is the difference between innerText and innerHTML?",
-                answer: document.createElement('form')
+                // answer: document.createElement('form')
             },
             {
                 question: "lorem",
-                answer: document.createElement('form')
+                // answer: document.createElement('form')
             }
         ]
     },
     {
         genre:"Culture",
-        questions: []
+        questions: [
+            {
+                question: "In what city was Michael Jackson born?",
+                // answer: document.createElement('form')
+            },
+            {
+                question: "What year was 1984 published by George Orwell?",
+                // answer: document.createElement('form')
+            },
+            {
+                question:"Who is on the Twenty Dollar Bill?",
+                // answer: document.createElement('form')
+            }
+
+        ]
     },
     {
         genre:"Math",
