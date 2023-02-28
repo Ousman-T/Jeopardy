@@ -55,8 +55,21 @@ const jeopardyCats = [
         ]
     },
     {
-        genre:"Math",
-        questions:[]
+        genre:"Science",
+        questions:[
+            {
+                question:"How many elements are in the periodic table?",
+                // answer:document.createElement('form')
+            },
+            {
+                question:"Name at least one main layer of the atmosphere.",
+                // answer: document.createElement('form')
+            },
+            {
+                question:"How old is Earth? (According to 'science')",
+                answer: document.createElement('form')
+            }
+        ]
     }
 ]
 
