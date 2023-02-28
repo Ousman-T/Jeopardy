@@ -1,12 +1,21 @@
+const game = document.getElementById('game');
+const score = document.getElementById('score');
 
-// shuffling
-function shuffle(a){}
-
-
-class GameShow {
-    constructor(element, options={}){
-        this.useCategoryIds = ["Programming", "History", "Science", "Math", "Sports"];
+const jeopardyCats = [
+    {
+        genre: "History",
+        questions: []
+    },
+    {
+        genre:"Programming",
+        questions: []
+    },
+    {
+        genre:"Culture",
+        questions: []
+    },
+    {
+        genre:"Math",
+        questions:[]
     }
-}
-
-const game = new GameShow (document.querySelector(".app"), {});
+]
