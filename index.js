@@ -174,18 +174,22 @@ function addCategory(category){
     
 }
 // appending questions to the back of card
+console.log(jeopardyCats);
 
 
 jeopardyCats.forEach(category => addCategory(category))
+console.log(jeopardyCats);
 // creating flips
 const flipping = document.querySelectorAll('.card')
-function flipCard(){
+function flipCard(event){
     this.classList.toggle('flip')
-    flipping.setAttribute('data-question', jeopardyCats.questionsArr[0].question)
-    flipping.setAttribute('data-answer-1', jeopardyCats.questionsArr.answers[0])
-    flipping.setAttribute('data-answer-2', jeopardyCats.questionsArr[1])
-    flipping.setAttribute('data-correct', jeopardyCats.questionsArr.correct)
-    flipping.setAttribute('data-value', card.getInnerText())
+    // console.log(jeopardyCats.questionsArr[0]);
+    console.log(jeopardyCats);
+    event.target.setAttribute('data-question', jeopardyCats[0].questionsArr.question)
+    event.target.setAttribute('data-answer-1', jeopardyCats[0].questionsArr[0].answers)
+    event.target.setAttribute('data-answer-2', jeopardyCats[0].questionsArr[1])
+    event.target.setAttribute('data-correct', jeopardyCats[1].questionsArr[1].correct)
+    event.target.setAttribute('data-value', event.target.innerText)
     
 }
 console.log(flipping);

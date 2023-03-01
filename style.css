@@ -58,6 +58,14 @@ body {
 
 }
 
+.flip {
+   width:160px;
+   height:120px;
+   font-size: 100px;
+   margin: 5px;
+   padding:10px;
+   line-height:120px;
+}
 
 
 
