@@ -3,6 +3,10 @@ const score1 = document.getElementById('score-track');
 const score2 = document.getElementById('2nd-score-track');
 const player1 = document.getElementById('score-track');
 const player2 = document.getElementById('2nd-score-track');
+let play = document.getElementById('play');
+function playMusic(){
+    let audio = Audio('');
+}
 // creating teams by adding player and score to an array to loop through in future
 const teams = [
     [score1, player1]
@@ -125,7 +129,7 @@ const jeopardyCats = [
                 answers:[],
                 correct:['4.5 billion years'],
                 level: 'Advance'
-
+                
             }
         ]
     }
@@ -169,13 +173,20 @@ function addCategory(category){
     })
     
 }
+// appending questions to the back of card
+
 
 jeopardyCats.forEach(category => addCategory(category))
-// assigning question text to the back of cards and flip 
+// creating flips
 const flipping = document.querySelectorAll('.card')
 function flipCard(){
     this.classList.toggle('flip')
-    console.log(this);
+    flipping.setAttribute('data-question', jeopardyCats.questionsArr[0].question)
+    flipping.setAttribute('data-answer-1', jeopardyCats.questionsArr.answers[0])
+    flipping.setAttribute('data-answer-2', jeopardyCats.questionsArr[1])
+    flipping.setAttribute('data-correct', jeopardyCats.questionsArr.correct)
+    flipping.setAttribute('data-value', card.getInnerText())
+    
 }
 console.log(flipping);
 
