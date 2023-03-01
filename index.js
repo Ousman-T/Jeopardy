@@ -185,11 +185,19 @@ function flipCard(event){
     this.classList.toggle('flip')
     // console.log(jeopardyCats.questionsArr[0]);
     console.log(jeopardyCats);
-    event.target.setAttribute('data-question', jeopardyCats[0].questionsArr.question)
-    event.target.setAttribute('data-answer-1', jeopardyCats[0].questionsArr[0].answers)
-    event.target.setAttribute('data-answer-2', jeopardyCats[0].questionsArr[1])
-    event.target.setAttribute('data-correct', jeopardyCats[1].questionsArr[1].correct)
-    event.target.setAttribute('data-value', event.target.innerText)
+    // history 100;
+    
+    event.target.setAttribute('data-question-ghengis', jeopardyCats[0].questionsArr[0].question)
+    event.target.setAttribute('data-answers-1', jeopardyCats[0].questionsArr[0].answers[0])
+    event.target.setAttribute('data-answers-2', jeopardyCats[0].questionsArr[0].answers[1])
+    event.target.setAttribute('data-correct', jeopardyCats[0].questionsArr[0].correct)
+    event.target.setAttribute('data-value-ghengis', event.target.innerText)
+    
+    // history 200;
+    event.target.setAttribute('data-question-alexander', jeopardyCats[0].questionsArr[1].question)
+    event.target.setAttribute('data-answers-1', jeopardyCats[0].questionsArr[1].answers[0])
+    event.target.setAttribute('data-answers-2',jeopardyCats[0].questionsArr[1].answers[1])
+    event.target.setAttribute('data-correct', jeopardyCats[0].questionsArr[1].correct)
     
 }
 console.log(flipping);
