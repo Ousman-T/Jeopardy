@@ -3,7 +3,21 @@ const score1 = document.getElementById('score-track');
 const score2 = document.getElementById('2nd-score-track');
 const player1 = document.getElementById('score-track');
 const player2 = document.getElementById('2nd-score-track');
-
+// creating teams by adding player and score to an array to loop through in future
+const teams = [
+    [score1, player1]
+    [score2, player2]
+]
+let currentTeams = 0;
+// looping through teams
+function switchingTeams(){
+    console.log(teams.length);
+    if(currentTeams < teams.length-1){
+        currentTeams++;
+    } else {
+        currentTeams = 0;
+    }
+}
 // large array storing all questions genres and answers
 const jeopardyCats = [
     {
@@ -154,6 +168,8 @@ function addCategory(category){
 })
 
 }
+
+
 
 jeopardyCats.forEach(category => addCategory(category))
 
