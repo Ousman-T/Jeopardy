@@ -8,7 +8,7 @@ const player2 = document.getElementById('2nd-score-track');
 const jeopardyCats = [
     {
         genre: "History",
-        questions: [
+        questionsArr: [
             {
                 question: "Where was Ghengis Khan Born",
                 // answer: document.createElement('form')
@@ -36,20 +36,20 @@ const jeopardyCats = [
     },
     {
         genre:"Programming",
-        questions: [
+        questionsArr: [
+            {
+                question: "Which is safer innerText or innerHTML?",
+                // answer: document.createElement('form')
+                answers:[],
+                correct: 'innerText',
+                level:'Beginner'
+            },
             {
                 question: "What is the name of the person who invented the language JavaScript?",
                 // answer: document.createElement('form')
                 answers:[],
-                correct: 'Brendan Eich',
-                level:'Intermediate'
-            },
-            {
-                question: "Which is safer between innerText and innerHTML?",
-                // answer: document.createElement('form')
-                answers:[],
-                correct:'innerText',
-                level: 'Beginner'
+                correct:'Brendan Eich',
+                level: 'Intermediate'
             },
             {
                 question: "When was GitHub founded?",
@@ -62,7 +62,7 @@ const jeopardyCats = [
     },
     {
         genre:"Culture",
-        questions: [
+        questionsArr: [
             {
                 question: "In what city was Michael Jackson born?",
                 // answer: document.createElement('form')
@@ -89,20 +89,20 @@ const jeopardyCats = [
     },
     {
         genre:"Science",
-        questions:[
-            {
-                question:"How many elements are in the periodic table?",
-                // answer:document.createElement('form')
-                answers:[],
-                correct:['118'],
-                level: 'Intermediate'
-            },
+        questionsArr:[
             {
                 question:"Name at least one main layer of the atmosphere.",
-                // answer: document.createElement('form')
+                // answer:document.createElement('form')
                 answers:[],
                 correct:['Troposphere', 'Stratosphere', 'Exosphere'],
                 level: 'Beginner'
+            },
+            {
+                question:"How many elements are in the periodic table?",
+                // answer: document.createElement('form')
+                answers:[],
+                correct:['118'],
+                level: 'Intermediate'
             },
             {
                 question:"How old is Earth? (According to 'science')",
@@ -119,18 +119,22 @@ const jeopardyCats = [
 function addCategory(category){
     // created a new div and named it column to store the columns
     const column = document.createElement('div')
+    // adding a class to the  column variable
     column.classList.add('genre-column')
+    // creating a variable to store the titles of each genre
     const genreTitle = document.createElement('div')
+    // added a class to the title variable
     genreTitle.classList.add('genre-title')
+    // Setting the inner text to the genre variable
     genreTitle.innerText = category.genre
 
 
-// adding columns and games to the original html
+// adding columns and genres to the original html
     column.appendChild(genreTitle)
     game.append(column)
 
     // creating cards
-    category.questions.forEach(question => {
+    category.questionsArr.forEach(question => {
     const card = document.createElement('div')
     card.classList.add('card')
     column.append(card)
@@ -145,7 +149,9 @@ function addCategory(category){
         card.innerText = '300';
     }
 
-    })
+    
+    
+})
 
 }
 
