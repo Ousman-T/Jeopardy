@@ -188,9 +188,9 @@ function flipCard(event){
     // history 100;
     
     event.target.setAttribute('data-question-ghengis', jeopardyCats[0].questionsArr[0].question)
-    event.target.setAttribute('data-answers-1', jeopardyCats[0].questionsArr[0].answers[0])
-    event.target.setAttribute('data-answers-2', jeopardyCats[0].questionsArr[0].answers[1])
-    event.target.setAttribute('data-correct', jeopardyCats[0].questionsArr[0].correct)
+    event.target.setAttribute('data-answers-ghengis', jeopardyCats[0].questionsArr[0].answers[0])
+    event.target.setAttribute('data-answers-ghengis', jeopardyCats[0].questionsArr[0].answers[1])
+    event.target.setAttribute('data-correct-ghengis', jeopardyCats[0].questionsArr[0].correct)
     event.target.setAttribute('data-value-ghengis', event.target.innerText)
     
     // history 200;
