@@ -18,6 +18,7 @@ function switchingTeams(){
         currentTeams = 0;
     }
 }
+
 // large array storing all questions genres and answers
 const jeopardyCats = [
     {
@@ -26,7 +27,7 @@ const jeopardyCats = [
             {
                 question: "Where was Ghengis Khan Born",
                 // answer: document.createElement('form')
-                answers:[],
+                answers:['Khazakstan', 'Mongolia'],
                 correct: 'Mongolia',
                 level: 'Beginner'
                 
@@ -34,7 +35,7 @@ const jeopardyCats = [
             {
                 question:"How old was Alexander the Great when he passed?",
                 // answer: document.createElement('form')
-                answers:[],
+                answers:['28', '32'],
                 correct:'32',
                 level: 'Intermediate'
                 
@@ -42,7 +43,7 @@ const jeopardyCats = [
             {
                 question:"What was the name of Mao Zedong's plan to industrialize China?",
                 // answer: document.createElement('form')
-                answers:[],
+                answers:['Great Leap Forward', 'China Rising'],
                 correct:'Great Leap Forward',
                 level: 'Advance'
             }
@@ -54,7 +55,7 @@ const jeopardyCats = [
             {
                 question: "Which is safer innerText or innerHTML?",
                 // answer: document.createElement('form')
-                answers:[],
+                answers:['innerHTML', 'innerText'],
                 correct: 'innerText',
                 level:'Beginner'
             },
@@ -68,7 +69,7 @@ const jeopardyCats = [
             {
                 question: "When was GitHub founded?",
                 // answer: document.createElement('form')
-                answers:[],
+                answers:['2008', '2012'],
                 correct:'2008',
                 level: 'Advance'
             }
@@ -80,21 +81,21 @@ const jeopardyCats = [
             {
                 question: "In what city was Michael Jackson born?",
                 // answer: document.createElement('form')
-                answers:[],
+                answers:['Detroit, Michigan', 'Gary, Indiana'],
                 correct:'Gary, Indiana',
                 level: 'Beginner'
             },
             {
                 question: "What year was 1984 published by George Orwell?",
                 // answer: document.createElement('form')
-                answers:[],
+                answers:['1984', '1949'],
                 correct:'1949',
                 level:'Intermediate'
             },
             {
                 question:"Who is on the Twenty Dollar Bill?",
                 // answer: document.createElement('form')
-                answers:[],
+                answers:['Benjamin Franklin', 'Andrew Jackson'],
                 correct:'Andrew Jackson',
                 level:'Advance'
             }
@@ -107,7 +108,7 @@ const jeopardyCats = [
             {
                 question:"Name at least one main layer of the atmosphere.",
                 // answer:document.createElement('form')
-                answers:[],
+                answers:['Troposphere', ''],
                 correct:['Troposphere', 'Stratosphere', 'Exosphere'],
                 level: 'Beginner'
             },
@@ -141,35 +142,42 @@ function addCategory(category){
     genreTitle.classList.add('genre-title')
     // Setting the inner text to the genre variable
     genreTitle.innerText = category.genre
-
-
-// adding columns and genres to the original html
+    
+    
+    // adding columns and genres to the original html
     column.appendChild(genreTitle)
     game.append(column)
-
+    
     // creating cards
     category.questionsArr.forEach(question => {
-    const card = document.createElement('div')
-    card.classList.add('card')
-    column.append(card)
-    // assigning numbers to back of cards
-    if(question.level === 'Beginner'){
-        card.innerText = '100';
-    }
-    if(question.level === 'Intermediate'){
-        card.innerText = '200';
-    }
-    if(question.level === 'Advance'){
-        card.innerText = '300';
-    }
-
+        const card = document.createElement('div')
+        card.classList.add('card')
+        column.append(card)
+        // assigning numbers to back of cards
+        if(question.level === 'Beginner'){
+            card.innerText = '100';
+        }
+        if(question.level === 'Intermediate'){
+            card.innerText = '200';
+        }
+        if(question.level === 'Advance'){
+            card.innerText = '300';
+        }
+        
+        
+        
+    })
     
-    
-})
-
 }
 
-
-
 jeopardyCats.forEach(category => addCategory(category))
+// assigning question text to the back of cards and flip 
+const flipping = document.querySelectorAll('.card')
+function flipCard(){
+    this.classList.toggle('flip')
+    console.log(this);
+}
+console.log(flipping);
+
+flipping.forEach(card => card.addEventListener('click', flipCard));
 
