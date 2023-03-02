@@ -70,6 +70,9 @@ body {
    transform: rotateY(180deg);
    text-align: center;
    margin-top: 0;
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
 }
 
 .button {
@@ -77,6 +80,15 @@ body {
    backface-visibility: hidden;
    /* transform: rotateY(180deg); */
    text-align: center;
-   margin-top: 0;
+   /* margin-top: 75px; */
+   display: block;
+   justify-content: space-between;
+   flex-direction: column;
+   
+   /* margin-bottom: 75px; */
+
+   
+   
+
    
 }

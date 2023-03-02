@@ -153,6 +153,7 @@ function getQuestion(id) {
   }
 }
 
+
 // function to loop through the jeopardy category
 function addCategory(category) {
   // created a new div and named it column to store the columns
@@ -171,24 +172,30 @@ function addCategory(category) {
   game.append(column);
 
   // creating cards
-  category.questionsArr.forEach((question) => {
+  category.questionsArr.forEach((question, index) => {
     const card = document.createElement("div");
     card.classList.add("card");
     const p1 = document.createElement('p');
     p1.classList.add('front');
     const p2 = document.createElement('p');
     p2.classList.add('back');
-    p2.textContent = question.question;
+    const textDiv = document.createElement('div')
+
+    textDiv.textContent = question.question;
+    p2.appendChild(textDiv)
     // adding buttons
-    // const button1 = document.createElement('button')
-    // const button2 = document.createElement('button')
-    // button1.classList.add('button')
-    // button2.classList.add('button')
-    // // console.log(jeopardyCats[0].questionsArr[0].answers[0]);
-    // button1.textContent = jeopardyCats[0].questionsArr[0].answers[0]
-    // button2.textContent = jeopardyCats[0].questionsArr[0].answers[1]
-    // p2.appendChild(button1)
-    // p2.appendChild(button2)
+    const div = document.createElement('div')
+    const button1 = document.createElement('button', 'first')
+    const button2 = document.createElement('button', 'second')
+    button1.classList.add('button')
+    button2.classList.add('button')
+    console.log(jeopardyCats[0].questionsArr[0].answers[0]);
+    
+    button1.textContent = category.questionsArr[index].answers[0]
+    button2.textContent = category.questionsArr[index].answers[1]
+    div.appendChild(button1)
+    div.appendChild(button2)
+    p2.appendChild(div)
     
     card.setAttribute("data-id", question.id);
   
