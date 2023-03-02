@@ -179,7 +179,17 @@ function addCategory(category) {
     const p2 = document.createElement('p');
     p2.classList.add('back');
     p2.textContent = question.question;
-  
+    // adding buttons
+    // const button1 = document.createElement('button')
+    // const button2 = document.createElement('button')
+    // button1.classList.add('button')
+    // button2.classList.add('button')
+    // // console.log(jeopardyCats[0].questionsArr[0].answers[0]);
+    // button1.textContent = jeopardyCats[0].questionsArr[0].answers[0]
+    // button2.textContent = jeopardyCats[0].questionsArr[0].answers[1]
+    // p2.appendChild(button1)
+    // p2.appendChild(button2)
+    
     card.setAttribute("data-id", question.id);
   
     // assigning numbers to back of cards
@@ -211,12 +221,12 @@ function flipCard(event) {
   console.log(id);
   let question = getQuestion(id);
   console.log(question);
-
   event.target.setAttribute("data-question", question.question);
   event.target.setAttribute("data-answers", question.answers);
   event.target.setAttribute("data-correct-answer", question.correct);
 }
 console.log(flipping);
+
 switchingTeams()
 
 flipping.forEach((card) => card.addEventListener("click", flipCard));
