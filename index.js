@@ -174,18 +174,27 @@ function addCategory(category) {
   category.questionsArr.forEach((question) => {
     const card = document.createElement("div");
     card.classList.add("card");
+    const p1 = document.createElement('p');
+    p1.classList.add('front');
+    const p2 = document.createElement('p');
+    p2.classList.add('back');
+    p2.textContent = question.question;
+  
     card.setAttribute("data-id", question.id);
-    column.append(card);
+  
     // assigning numbers to back of cards
     if (question.level === "Beginner") {
-      card.innerText = "100";
+      p1.innerText = "100";
     }
     if (question.level === "Intermediate") {
-      card.innerText = "200";
+      p1.innerText = "200";
     }
     if (question.level === "Advance") {
-      card.innerText = "300";
+      p1.innerText = "300";
     }
+    card.appendChild(p1);
+    card.appendChild(p2);
+    column.append(card);
   });
 }
 // appending questions to the back of card
@@ -208,5 +217,6 @@ function flipCard(event) {
   event.target.setAttribute("data-correct-answer", question.correct);
 }
 console.log(flipping);
+switchingTeams()
 
 flipping.forEach((card) => card.addEventListener("click", flipCard));
