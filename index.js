@@ -68,7 +68,7 @@ const jeopardyCats = [
         question:
           "What is the name of the person who invented the language JavaScript?",
         // answer: document.createElement('form')
-        answers: [],
+        answers: ['Brendan Eich', 'John Carmack'],
         correct: "Brendan Eich",
         level: "Intermediate",
       },
@@ -118,24 +118,24 @@ const jeopardyCats = [
         id: 9,
         question: "Name at least one main layer of the atmosphere.",
         // answer:document.createElement('form')
-        answers: ["Troposphere", ""],
-        correct: ["Troposphere", "Stratosphere", "Exosphere"],
+        answers: ["Troposphere", "Nexosphere",],
+        correct: "Troposphere", 
         level: "Beginner",
       },
       {
         id: 10,
         question: "How many elements are in the periodic table?",
         // answer: document.createElement('form')
-        answers: [],
-        correct: ["118"],
+        answers: ["134", "118"],
+        correct: "118",
         level: "Intermediate",
       },
       {
         id: 11,
         question: "How old is Earth? (According to 'science')",
         // answer: document.createElement('form')
-        answers: [],
-        correct: ["4.5 billion years"],
+        answers: ['11.7 billion years', '4.5 billion years'],
+        correct: "4.5 billion years",
         level: "Advance",
       },
     ],
