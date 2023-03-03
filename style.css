@@ -23,7 +23,6 @@ body {
 
 #page-header{
    text-decoration: underline;
-   
 }
 
 .card {
@@ -65,6 +64,9 @@ body {
 .front {
    position: absolute;
    backface-visibility: hidden;
+   font-size: 50px;
+   text-align: center;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .back {
    position: absolute;
@@ -76,6 +78,7 @@ body {
    flex-wrap: wrap;
    flex-direction: column;
    word-wrap: break-word;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .button-1 {

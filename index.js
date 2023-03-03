@@ -214,6 +214,10 @@ function addCategory(category) {
     column.append(card);
   });
 }
+
+function buttonClick(){
+  
+}
 // appending questions to the back of card
 console.log(jeopardyCats);
 
@@ -232,8 +236,10 @@ function flipCard(event) {
   event.target.setAttribute("data-answers", question.answers);
   event.target.setAttribute("data-correct-answer", question.correct);
 }
+
 console.log(flipping);
 
 switchingTeams()
 
 flipping.forEach((card) => card.addEventListener("click", flipCard));
+button1.forEach((button) => button1.addEventListener('click', ))
