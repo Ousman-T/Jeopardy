@@ -3,9 +3,10 @@ const score1 = document.getElementById("score-track");
 const score2 = document.getElementById("2nd-score-track");
 const player1 = document.getElementById("score-track");
 const player2 = document.getElementById("2nd-score-track");
-let play = document.getElementById("play");
-function playMusic() {
-  let audio = Audio("");
+let reset = document.getElementById("reset");
+reset.onclick = function() {resetBoard()};
+function resetBoard() {
+  let reset = window.location.reload()
 }
 // creating teams by adding player and score to an array to loop through in future
 // const teams = [[score1, player1][(score2, player2)]];
@@ -260,7 +261,7 @@ console.log(correct);
 
 function disableQuestion(card){
   let childNodes = card.getElementsByTagName('*');
-for (let node of childNodes) {
+for (let node of childNodes) {  
     node.disabled = true;
 }
 }
