@@ -185,10 +185,10 @@ function addCategory(category) {
     p2.appendChild(textDiv)
     // adding buttons
     const div = document.createElement('div')
-    const button1 = document.createElement('button', 'first')
-    const button2 = document.createElement('button', 'second')
-    button1.classList.add('button')
-    button2.classList.add('button')
+    const button1 = document.createElement('button')
+    const button2 = document.createElement('button')
+    button1.classList.add('button-1')
+    button2.classList.add('button-2')
     console.log(jeopardyCats[0].questionsArr[0].answers[0]);
     
     button1.textContent = category.questionsArr[index].answers[0]
