@@ -8,18 +8,30 @@ function playMusic() {
   let audio = Audio("");
 }
 // creating teams by adding player and score to an array to loop through in future
-const teams = [[score1, player1][(score2, player2)]];
-let currentTeams = 0;
+// const teams = [[score1, player1][(score2, player2)]];
+// let currentTeams = 0;
 // looping through teams
-function switchingTeams() {
-  console.log(teams.length);
-  if (currentTeams < teams.length - 1) {
-    currentTeams++;
-  } else {
-    currentTeams = 0;
+// function switchingTeams() {
+//   console.log(teams.length);
+//   if (currentTeams < teams.length - 1) {
+//     currentTeams++;
+//   } else {
+//     currentTeams = 0;
+//   }
+// }
+let isPlayer1 = true;
+let isPlayer2 = false;
+let p1Score = 0;
+let p2Score = 0;
+function teamSwitch(){
+  if(isPlayer1 == true){
+    isPlayer1 = false;
+    isPlayer2 = true;
+  }else{
+    isPlayer1 = true;
+    isPlayer2 = false;
   }
 }
-
 // large array storing all questions genres and answers
 const jeopardyCats = [
   {
@@ -32,6 +44,7 @@ const jeopardyCats = [
         answers: ["Khazakstan", "Mongolia"],
         correct: "Mongolia",
         level: "Beginner",
+        score: 100
       },
       {
         id: 1,
@@ -40,6 +53,7 @@ const jeopardyCats = [
         answers: ["28", "32"],
         correct: "32",
         level: "Intermediate",
+        score: 200
       },
       {
         id: 2,
@@ -49,6 +63,7 @@ const jeopardyCats = [
         answers: ["Great Leap Forward", "China Rising"],
         correct: "Great Leap Forward",
         level: "Advance",
+        score: 300
       },
     ],
   },
@@ -62,6 +77,7 @@ const jeopardyCats = [
         answers: ["innerHTML", "innerText"],
         correct: "innerText",
         level: "Beginner",
+        score: 100
       },
       {
         id: 4,
@@ -71,6 +87,7 @@ const jeopardyCats = [
         answers: ['Brendan Eich', 'John Carmack'],
         correct: "Brendan Eich",
         level: "Intermediate",
+        score: 200
       },
       {
         id: 5,
@@ -79,6 +96,7 @@ const jeopardyCats = [
         answers: ["2008", "2012"],
         correct: "2008",
         level: "Advance",
+        score: 300
       },
     ],
   },
@@ -92,6 +110,7 @@ const jeopardyCats = [
         answers: ["Detroit, Michigan", "Gary, Indiana"],
         correct: "Gary, Indiana",
         level: "Beginner",
+        score: 100
       },
       {
         id: 7,
@@ -100,6 +119,7 @@ const jeopardyCats = [
         answers: ["1984", "1949"],
         correct: "1949",
         level: "Intermediate",
+        score: 200
       },
       {
         id: 8,
@@ -108,6 +128,7 @@ const jeopardyCats = [
         answers: ["Benjamin Franklin", "Andrew Jackson"],
         correct: "Andrew Jackson",
         level: "Advance",
+        score: 300
       },
     ],
   },
@@ -121,6 +142,7 @@ const jeopardyCats = [
         answers: ["Troposphere", "Nexosphere",],
         correct: "Troposphere", 
         level: "Beginner",
+        score: 100
       },
       {
         id: 10,
@@ -129,6 +151,7 @@ const jeopardyCats = [
         answers: ["134", "118"],
         correct: "118",
         level: "Intermediate",
+        score: 200
       },
       {
         id: 11,
@@ -137,6 +160,7 @@ const jeopardyCats = [
         answers: ['11.7 billion years', '4.5 billion years'],
         correct: "4.5 billion years",
         level: "Advance",
+        score: 300
       },
     ],
   },
@@ -189,34 +213,51 @@ function addCategory(category) {
     const button2 = document.createElement('button')
     button1.classList.add('button-1')
     button2.classList.add('button-2')
-    console.log(jeopardyCats[0].questionsArr[0].answers[0]);
+    // console.log(jeopardyCats[0].questionsArr[0].answers[0]);
     
     button1.textContent = category.questionsArr[index].answers[0]
     button2.textContent = category.questionsArr[index].answers[1]
     div.appendChild(button1)
     div.appendChild(button2)
     p2.appendChild(div)
-    
+    let correct = category.questionsArr[index].correct
+    let score = category.questionsArr[index].score
+    button1.onclick = function(){ buttonClick(button1.textContent, correct, score, card)}
+    button2.onclick = function(){ buttonClick(button2.textContent, correct, score, card)}
     card.setAttribute("data-id", question.id);
   
     // assigning numbers to back of cards
-    if (question.level === "Beginner") {
-      p1.innerText = "100";
-    }
-    if (question.level === "Intermediate") {
-      p1.innerText = "200";
-    }
-    if (question.level === "Advance") {
-      p1.innerText = "300";
-    }
+    p1.innerText = score
     card.appendChild(p1);
     card.appendChild(p2);
     column.append(card);
   });
+  // identifying if button clicked is right or wrong
+  
 }
 
-function buttonClick(){
-  
+function buttonClick(answer, correct, score, card){
+console.log(answer);
+console.log(correct);
+  if(answer == correct){
+    if(isPlayer1 == true){
+      p1Score += score;
+      console.log(p1Score);
+      score1.innerText = p1Score
+    }else{
+      p2Score += score;
+      score2.innerText =p2Score
+    }
+    disableQuestion(card)
+  }
+  teamSwitch()
+}
+
+function disableQuestion(card){
+  let childNodes = card.getElementsByTagName('*');
+for (let node of childNodes) {
+    node.disabled = true;
+}
 }
 // appending questions to the back of card
 console.log(jeopardyCats);
@@ -226,20 +267,22 @@ console.log(jeopardyCats);
 // creating flips
 const flipping = document.querySelectorAll(".card");
 function flipCard(event) {
+  if(event.target.tagName == 'BUTTON' ){
+    return;
+  }
   this.classList.toggle("flip");
   // console.log(jeopardyCats.questionsArr[0]);
   let id = event.target.getAttribute("data-id");
   console.log(id);
   let question = getQuestion(id);
   console.log(question);
+
   event.target.setAttribute("data-question", question.question);
   event.target.setAttribute("data-answers", question.answers);
   event.target.setAttribute("data-correct-answer", question.correct);
 }
 
+
 console.log(flipping);
 
-switchingTeams()
-
 flipping.forEach((card) => card.addEventListener("click", flipCard));
-button1.forEach((button) => button1.addEventListener('click', ))
