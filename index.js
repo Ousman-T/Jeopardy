@@ -23,6 +23,9 @@ let isPlayer1 = true;
 let isPlayer2 = false;
 let p1Score = 0;
 let p2Score = 0;
+const playerSpan = document.getElementById('player')
+// tenary statement to span score to HTML
+playerSpan.innerText = isPlayer1?"player1":"player2"
 function teamSwitch(){
   if(isPlayer1 == true){
     isPlayer1 = false;
@@ -31,6 +34,8 @@ function teamSwitch(){
     isPlayer1 = true;
     isPlayer2 = false;
   }
+  playerSpan.innerText = isPlayer1?"player1":"player2"
+
 }
 // large array storing all questions genres and answers
 const jeopardyCats = [
