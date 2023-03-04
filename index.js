@@ -9,17 +9,6 @@ function resetBoard() {
   let reset = window.location.reload()
 }
 // creating teams by adding player and score to an array to loop through in future
-// const teams = [[score1, player1][(score2, player2)]];
-// let currentTeams = 0;
-// looping through teams
-// function switchingTeams() {
-//   console.log(teams.length);
-//   if (currentTeams < teams.length - 1) {
-//     currentTeams++;
-//   } else {
-//     currentTeams = 0;
-//   }
-// }
 let isPlayer1 = true;
 let isPlayer2 = false;
 let p1Score = 0;
@@ -44,6 +33,7 @@ const jeopardyCats = [
     genre: "History",
     questionsArr: [
       {
+        // index id stored in every object for looping through
         id: 0,
         question: "Where was Ghengis Khan Born",
         // answer: document.createElement('form')
@@ -171,7 +161,6 @@ const jeopardyCats = [
     ],
   },
 ];
-
 // function to loop through questions and return based on matching ids
 function getQuestion(id) {
   for (let i = 0; i < jeopardyCats.length; i++) {
@@ -182,8 +171,6 @@ function getQuestion(id) {
     }
   }
 }
-
-
 // function to loop through the jeopardy category
 function addCategory(category) {
   // created a new div and named it column to store the columns
@@ -200,8 +187,7 @@ function addCategory(category) {
   // adding columns and genres to the original html
   column.appendChild(genreTitle);
   game.append(column);
-
-  // creating cards
+  // creating card faces, card backs, columns, questions, and appending
   category.questionsArr.forEach((question, index) => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -210,7 +196,7 @@ function addCategory(category) {
     const p2 = document.createElement('p');
     p2.classList.add('back');
     const textDiv = document.createElement('div')
-
+    // 
     textDiv.textContent = question.question;
     p2.appendChild(textDiv)
     // adding buttons
@@ -220,28 +206,25 @@ function addCategory(category) {
     button1.classList.add('button-1')
     button2.classList.add('button-2')
     // console.log(jeopardyCats[0].questionsArr[0].answers[0]);
-
     button1.textContent = category.questionsArr[index].answers[0]
     button2.textContent = category.questionsArr[index].answers[1]
-    div.appendChild(button1)
-    div.appendChild(button2)
+    // div.appendChild(button1)
+    // div.appendChild(button2)
     p2.appendChild(div)
     let correct = category.questionsArr[index].correct
     let score = category.questionsArr[index].score
     button1.onclick = function () { buttonClick(button1.textContent, correct, score, card) }
     button2.onclick = function () { buttonClick(button2.textContent, correct, score, card) }
     card.setAttribute("data-id", question.id);
-
     // assigning numbers to back of cards
     p1.innerText = score
     card.appendChild(p1);
     card.appendChild(p2);
     column.append(card);
   });
-  // identifying if button clicked is right or wrong
 
 }
-
+// identifying if button clicked is right or wrong
 function buttonClick(answer, correct, score, card) {
   console.log(answer);
   console.log(correct);
@@ -254,21 +237,21 @@ function buttonClick(answer, correct, score, card) {
       p2Score += score;
       score2.innerText = p2Score
     }
+    // calling a function to disable cards after answer
     disableQuestion(card)
     winState();
   }
   teamSwitch()
 }
-
+// function for disabling buttons
 function disableQuestion(card) {
   let childNodes = card.getElementsByTagName('*');
   for (let node of childNodes) {
     node.disabled = true;
   }
 }
-// appending questions to the back of card
 console.log(jeopardyCats);
-
+// appending questions to the back of card
 jeopardyCats.forEach((category) => addCategory(category));
 console.log(jeopardyCats);
 // creating flips
@@ -283,21 +266,53 @@ function flipCard(event) {
   console.log(id);
   let question = getQuestion(id);
   console.log(question);
-
+  console.log(event.target);
   event.target.setAttribute("data-question", question.question);
   event.target.setAttribute("data-answers", question.answers);
   event.target.setAttribute("data-correct-answer", question.correct);
+  document.getElementById('answer-text-button').setAttribute('data-id', id)
+  document.getElementById('answer-text-button').setAttribute('data-card', event.target)
 }
+let answeredQuestions = [];
+function checkIfAnswered(id) {
+  for (let i = 0; i < answeredQuestions.length; i++) {
+    if (id == answeredQuestions[i])
+      return true;
+  }
+  return false;
+}
+function answerQuestion(id) {
+  if (checkIfAnswered(id) == true) {
+    alert('Answered Question Already')
+    return;
+  }
+  let answer = document.getElementById('answer-text').value
+  console.log(answer);
+  let question = getQuestion(id);
+  let correctAnswer = question.correct
 
-function winState(){
-  if(p1Score >= 1200){
+  if (answer == correctAnswer) {
+    if (isPlayer1 == true) {
+      p1Score += question.score;
+      console.log(p1Score);
+      score1.innerText = p1Score
+    } else {
+      p2Score += question.score;
+      score2.innerText = p2Score
+    }
+    answeredQuestions.push(id)
+
+    // calling a function to disable cards after answer
+    winState();
+  }
+  teamSwitch();
+}
+function winState() {
+  if (p1Score >= 1200) {
     alert('Player 1 Wins!!')
-  }else if(p2Score >= 1200){
+  } else if (p2Score >= 1200) {
     alert('Player 2 Wins!!')
   }
 }
-
-
 console.log(flipping);
-
 flipping.forEach((card) => card.addEventListener("click", flipCard));
