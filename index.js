@@ -1,9 +1,9 @@
+// defining main variables for the game
 const game = document.getElementById("game");
 const score1 = document.getElementById("score-track");
 const score2 = document.getElementById("2nd-score-track");
-const player1 = document.getElementById("score-track");
-const player2 = document.getElementById("2nd-score-track");
 let reset = document.getElementById("reset");
+// function to reset the buttons using the window scope
 reset.onclick = function () { resetBoard() };
 function resetBoard() {
   let reset = window.location.reload()
@@ -16,6 +16,7 @@ let p2Score = 0;
 const playerSpan = document.getElementById('player')
 // tenary statement to span score to HTML
 playerSpan.innerText = isPlayer1 ? "player1" : "player2"
+// logic for a function to switch between players
 function teamSwitch() {
   if (isPlayer1 == true) {
     isPlayer1 = false;
@@ -36,7 +37,6 @@ const jeopardyCats = [
         // index id stored in every object for looping through
         id: 0,
         question: "Where was Ghengis Khan Born",
-        // answer: document.createElement('form')
         answers: ["Khazakstan", "Mongolia"],
         correct: "Mongolia",
         level: "Beginner",
@@ -45,7 +45,6 @@ const jeopardyCats = [
       {
         id: 1,
         question: "How old was Alexander the Great when he passed?",
-        // answer: document.createElement('form')
         answers: ["28", "32"],
         correct: "32",
         level: "Intermediate",
@@ -55,7 +54,6 @@ const jeopardyCats = [
         id: 2,
         question:
           "What was the name of Mao Zedong's plan to industrialize China?",
-        // answer: document.createElement('form')
         answers: ["Great Leap Forward", "China Rising"],
         correct: "Great Leap Forward",
         level: "Advance",
@@ -69,7 +67,6 @@ const jeopardyCats = [
       {
         id: 3,
         question: "Which is safer innerText or innerHTML?",
-        // answer: document.createElement('form')
         answers: ["innerHTML", "innerText"],
         correct: "innerText",
         level: "Beginner",
@@ -79,7 +76,6 @@ const jeopardyCats = [
         id: 4,
         question:
           "What is the name of the person who invented the language JavaScript?",
-        // answer: document.createElement('form')
         answers: ['Brendan Eich', 'John Carmack'],
         correct: "Brendan Eich",
         level: "Intermediate",
@@ -88,7 +84,6 @@ const jeopardyCats = [
       {
         id: 5,
         question: "When was GitHub founded?",
-        // answer: document.createElement('form')
         answers: ["2008", "2012"],
         correct: "2008",
         level: "Advance",
@@ -102,7 +97,6 @@ const jeopardyCats = [
       {
         id: 6,
         question: "In what city was Michael Jackson born?",
-        // answer: document.createElement('form')
         answers: ["Detroit, Michigan", "Gary, Indiana"],
         correct: "Gary, Indiana",
         level: "Beginner",
@@ -111,7 +105,6 @@ const jeopardyCats = [
       {
         id: 7,
         question: "What year was 1984 published by George Orwell?",
-        // answer: document.createElement('form')
         answers: ["1984", "1949"],
         correct: "1949",
         level: "Intermediate",
@@ -120,7 +113,6 @@ const jeopardyCats = [
       {
         id: 8,
         question: "Who is on the Twenty Dollar Bill?",
-        // answer: document.createElement('form')
         answers: ["Benjamin Franklin", "Andrew Jackson"],
         correct: "Andrew Jackson",
         level: "Advance",
@@ -134,7 +126,6 @@ const jeopardyCats = [
       {
         id: 9,
         question: "Name at least one main layer of the atmosphere.",
-        // answer:document.createElement('form')
         answers: ["Troposphere", "Nexosphere",],
         correct: "Troposphere",
         level: "Beginner",
@@ -143,7 +134,6 @@ const jeopardyCats = [
       {
         id: 10,
         question: "How many elements are in the periodic table?",
-        // answer: document.createElement('form')
         answers: ["134", "118"],
         correct: "118",
         level: "Intermediate",
@@ -152,7 +142,6 @@ const jeopardyCats = [
       {
         id: 11,
         question: "How old is Earth? (According to 'science')",
-        // answer: document.createElement('form')
         answers: ['11.7 billion years', '4.5 billion years'],
         correct: "4.5 billion years",
         level: "Advance",
@@ -201,20 +190,9 @@ function addCategory(category) {
     p2.appendChild(textDiv)
     // adding buttons
     const div = document.createElement('div')
-    const button1 = document.createElement('button')
-    const button2 = document.createElement('button')
-    button1.classList.add('button-1')
-    button2.classList.add('button-2')
-    // console.log(jeopardyCats[0].questionsArr[0].answers[0]);
-    button1.textContent = category.questionsArr[index].answers[0]
-    button2.textContent = category.questionsArr[index].answers[1]
-    // div.appendChild(button1)
-    // div.appendChild(button2)
     p2.appendChild(div)
     let correct = category.questionsArr[index].correct
     let score = category.questionsArr[index].score
-    button1.onclick = function () { buttonClick(button1.textContent, correct, score, card) }
-    button2.onclick = function () { buttonClick(button2.textContent, correct, score, card) }
     card.setAttribute("data-id", question.id);
     // assigning numbers to back of cards
     p1.innerText = score
@@ -224,32 +202,6 @@ function addCategory(category) {
   });
 
 }
-// identifying if button clicked is right or wrong
-function buttonClick(answer, correct, score, card) {
-  console.log(answer);
-  console.log(correct);
-  if (answer == correct) {
-    if (isPlayer1 == true) {
-      p1Score += score;
-      console.log(p1Score);
-      score1.innerText = p1Score
-    } else {
-      p2Score += score;
-      score2.innerText = p2Score
-    }
-    // calling a function to disable cards after answer
-    disableQuestion(card)
-    winState();
-  }
-  teamSwitch()
-}
-// function for disabling buttons
-function disableQuestion(card) {
-  let childNodes = card.getElementsByTagName('*');
-  for (let node of childNodes) {
-    node.disabled = true;
-  }
-}
 console.log(jeopardyCats);
 // appending questions to the back of card
 jeopardyCats.forEach((category) => addCategory(category));
@@ -257,23 +209,22 @@ console.log(jeopardyCats);
 // creating flips
 const flipping = document.querySelectorAll(".card");
 function flipCard(event) {
-  if (event.target.tagName == 'BUTTON') {
-    return;
-  }
+  // added a classlist to the item
   this.classList.toggle("flip");
-  // console.log(jeopardyCats.questionsArr[0]);
+  // recieving id of the data attributes
   let id = event.target.getAttribute("data-id");
   console.log(id);
+  // getting question from question array calling the get question function created
   let question = getQuestion(id);
   console.log(question);
   console.log(event.target);
-  event.target.setAttribute("data-question", question.question);
-  event.target.setAttribute("data-answers", question.answers);
-  event.target.setAttribute("data-correct-answer", question.correct);
+  // setting values based off the current question
   document.getElementById('answer-text-button').setAttribute('data-id', id)
   document.getElementById('answer-text-button').setAttribute('data-card', event.target)
 }
+// array for id's of question that has ALREADY been answered
 let answeredQuestions = [];
+// function to loop through questions and check if id is in answered question array
 function checkIfAnswered(id) {
   for (let i = 0; i < answeredQuestions.length; i++) {
     if (id == answeredQuestions[i])
@@ -281,18 +232,24 @@ function checkIfAnswered(id) {
   }
   return false;
 }
+// function used to prompt user to answer question 
 function answerQuestion(id) {
+  // logic to check if the question has been answered already (by checking if it was passed into the array storing all answered questions)
   if (checkIfAnswered(id) == true) {
     alert('Answered Question Already')
     return;
   }
+  // storing user's answer into a variable
   let answer = document.getElementById('answer-text').value
   console.log(answer);
+  // getting the question and storing into variable
   let question = getQuestion(id);
+  // getting correct answer from the answer object and storing into variable
   let correctAnswer = question.correct
-
+  // checking if user's answer equals the correct answer
   if (answer == correctAnswer) {
     if (isPlayer1 == true) {
+      // incrementing score up based off if it was answered by player1 or player2
       p1Score += question.score;
       console.log(p1Score);
       score1.innerText = p1Score
@@ -300,13 +257,17 @@ function answerQuestion(id) {
       p2Score += question.score;
       score2.innerText = p2Score
     }
+    // appending the id to the answered question array
     answeredQuestions.push(id)
 
     // calling a function to disable cards after answer
+    // callling the win state to see if player hit the score cap
     winState();
   }
+  // calling a function to switch between players
   teamSwitch();
 }
+// function used to determine if the player has reached score cap
 function winState() {
   if (p1Score >= 1200) {
     alert('Player 1 Wins!!')
@@ -315,4 +276,5 @@ function winState() {
   }
 }
 console.log(flipping);
+// adding onclick event to all cards and using flipCard function on it
 flipping.forEach((card) => card.addEventListener("click", flipCard));
