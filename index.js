@@ -4,7 +4,7 @@ const score2 = document.getElementById("2nd-score-track");
 const player1 = document.getElementById("score-track");
 const player2 = document.getElementById("2nd-score-track");
 let reset = document.getElementById("reset");
-reset.onclick = function() {resetBoard()};
+reset.onclick = function () { resetBoard() };
 function resetBoard() {
   let reset = window.location.reload()
 }
@@ -26,16 +26,16 @@ let p1Score = 0;
 let p2Score = 0;
 const playerSpan = document.getElementById('player')
 // tenary statement to span score to HTML
-playerSpan.innerText = isPlayer1?"player1":"player2"
-function teamSwitch(){
-  if(isPlayer1 == true){
+playerSpan.innerText = isPlayer1 ? "player1" : "player2"
+function teamSwitch() {
+  if (isPlayer1 == true) {
     isPlayer1 = false;
     isPlayer2 = true;
-  }else{
+  } else {
     isPlayer1 = true;
     isPlayer2 = false;
   }
-  playerSpan.innerText = isPlayer1?"player1":"player2"
+  playerSpan.innerText = isPlayer1 ? "player1" : "player2"
 
 }
 // large array storing all questions genres and answers
@@ -146,7 +146,7 @@ const jeopardyCats = [
         question: "Name at least one main layer of the atmosphere.",
         // answer:document.createElement('form')
         answers: ["Troposphere", "Nexosphere",],
-        correct: "Troposphere", 
+        correct: "Troposphere",
         level: "Beginner",
         score: 100
       },
@@ -220,7 +220,7 @@ function addCategory(category) {
     button1.classList.add('button-1')
     button2.classList.add('button-2')
     // console.log(jeopardyCats[0].questionsArr[0].answers[0]);
-    
+
     button1.textContent = category.questionsArr[index].answers[0]
     button2.textContent = category.questionsArr[index].answers[1]
     div.appendChild(button1)
@@ -228,10 +228,10 @@ function addCategory(category) {
     p2.appendChild(div)
     let correct = category.questionsArr[index].correct
     let score = category.questionsArr[index].score
-    button1.onclick = function(){ buttonClick(button1.textContent, correct, score, card)}
-    button2.onclick = function(){ buttonClick(button2.textContent, correct, score, card)}
+    button1.onclick = function () { buttonClick(button1.textContent, correct, score, card) }
+    button2.onclick = function () { buttonClick(button2.textContent, correct, score, card) }
     card.setAttribute("data-id", question.id);
-  
+
     // assigning numbers to back of cards
     p1.innerText = score
     card.appendChild(p1);
@@ -239,31 +239,32 @@ function addCategory(category) {
     column.append(card);
   });
   // identifying if button clicked is right or wrong
-  
+
 }
 
-function buttonClick(answer, correct, score, card){
-console.log(answer);
-console.log(correct);
-  if(answer == correct){
-    if(isPlayer1 == true){
+function buttonClick(answer, correct, score, card) {
+  console.log(answer);
+  console.log(correct);
+  if (answer == correct) {
+    if (isPlayer1 == true) {
       p1Score += score;
       console.log(p1Score);
       score1.innerText = p1Score
-    }else{
+    } else {
       p2Score += score;
-      score2.innerText =p2Score
+      score2.innerText = p2Score
     }
     disableQuestion(card)
+    winState();
   }
   teamSwitch()
 }
 
-function disableQuestion(card){
+function disableQuestion(card) {
   let childNodes = card.getElementsByTagName('*');
-for (let node of childNodes) {  
+  for (let node of childNodes) {
     node.disabled = true;
-}
+  }
 }
 // appending questions to the back of card
 console.log(jeopardyCats);
@@ -273,7 +274,7 @@ console.log(jeopardyCats);
 // creating flips
 const flipping = document.querySelectorAll(".card");
 function flipCard(event) {
-  if(event.target.tagName == 'BUTTON' ){
+  if (event.target.tagName == 'BUTTON') {
     return;
   }
   this.classList.toggle("flip");
@@ -286,6 +287,14 @@ function flipCard(event) {
   event.target.setAttribute("data-question", question.question);
   event.target.setAttribute("data-answers", question.answers);
   event.target.setAttribute("data-correct-answer", question.correct);
+}
+
+function winState(){
+  if(p1Score >= 1200){
+    alert('Player 1 Wins!!')
+  }else if(p2Score >= 1200){
+    alert('Player 2 Wins!!')
+  }
 }
 
 
