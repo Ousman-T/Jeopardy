@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Orbitron&display=swap');
-
 body {
    margin:0;
    padding:0;
@@ -12,19 +11,14 @@ body {
    font-family: 'Caveat', cursive;
    font-size: 28px;
 }
-
 #game {
    background-color: cornflowerblue;
    display: flex;
    gap: 25px;
-   
-
 }
-
 #page-header{
    text-decoration: underline;
 }
-
 .card {
    width: 160px;
    height:120px;
@@ -52,15 +46,10 @@ body {
    line-height: 120px;
    display:none;
    word-wrap: break-word;
-   
-
-
 }
-
 .flip {
    transform: rotateY(180deg);
 }
-
 .front {
    position: absolute;
    backface-visibility: hidden;
@@ -80,35 +69,23 @@ body {
    word-wrap: break-word;
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
 .button-1 {
    position: absolute;
    backface-visibility: hidden;
-   /* transform: rotateY(180deg); */
    text-align: center;
-   /* margin-top: 60px; */
    margin-bottom: 20px;
-   
    display: block;
-   /* display: inline-flexbox; */
    justify-content: space-between;
    flex-direction: column;
-   
-   /* margin-bottom: 75px; */
 }
-
 .button-2 {
    position: absolute;
    backface-visibility: hidden;
-   /* transform: rotateY(180deg); */
    text-align: center;
    margin-top: 40px;
    display: block;
-   /* display: inline-flexbox; */
    justify-content: space-between;
    flex-direction: column;
    word-wrap: break-word;
-   
-   /* margin-bottom: 75px; */
 }
 

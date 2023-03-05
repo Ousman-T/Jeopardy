@@ -172,7 +172,6 @@ function addCategory(category) {
   genreTitle.classList.add("genre-title");
   // Setting the inner text to the genre variable
   genreTitle.innerText = category.genre;
-
   // adding columns and genres to the original html
   column.appendChild(genreTitle);
   game.append(column);
@@ -185,7 +184,6 @@ function addCategory(category) {
     const p2 = document.createElement('p');
     p2.classList.add('back');
     const textDiv = document.createElement('div')
-    // 
     textDiv.textContent = question.question;
     p2.appendChild(textDiv)
     // adding buttons
@@ -200,7 +198,6 @@ function addCategory(category) {
     card.appendChild(p2);
     column.append(card);
   });
-
 }
 console.log(jeopardyCats);
 // appending questions to the back of card
@@ -259,7 +256,6 @@ function answerQuestion(id) {
     }
     // appending the id to the answered question array
     answeredQuestions.push(id)
-
     // calling a function to disable cards after answer
     // callling the win state to see if player hit the score cap
     winState();
