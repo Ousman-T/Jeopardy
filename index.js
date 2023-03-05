@@ -8,7 +8,7 @@ reset.onclick = function () { resetBoard() };
 function resetBoard() {
   let reset = window.location.reload()
 }
-// creating teams by adding player and score to an array to loop through in future
+// creating teams by adding boolean variable to players 
 let isPlayer1 = true;
 let isPlayer2 = false;
 let p1Score = 0;
