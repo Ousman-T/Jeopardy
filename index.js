@@ -206,18 +206,22 @@ console.log(jeopardyCats);
 // creating flips
 const flipping = document.querySelectorAll(".card");
 function flipCard(event) {
-  // added a classlist to the item
-  this.classList.toggle("flip");
-  // recieving id of the data attributes
-  let id = event.target.getAttribute("data-id");
-  console.log(id);
-  // getting question from question array calling the get question function created
-  let question = getQuestion(id);
-  console.log(question);
-  console.log(event.target);
-  // setting values based off the current question
-  document.getElementById('answer-text-button').setAttribute('data-id', id)
-  document.getElementById('answer-text-button').setAttribute('data-card', event.target)
+	
+  //check if card is going to be unflipped or, if it will, that not contains others flipped
+  if(this.classList.contains("flip") || document.getElementsByClassName("card flip").length == 0){
+	// added a classlist to the item
+	this.classList.toggle("flip");
+	// recieving id of the data attributes
+	let id = event.target.getAttribute("data-id");
+	console.log(id);
+	// getting question from question array calling the get question function created
+	let question = getQuestion(id);
+	console.log(question);
+	console.log(event.target);
+	// setting values based off the current question
+	document.getElementById('answer-text-button').setAttribute('data-id', id)
+	document.getElementById('answer-text-button').setAttribute('data-card', event.target)
+  }
 }
 // array for id's of question that has ALREADY been answered
 let answeredQuestions = [];
